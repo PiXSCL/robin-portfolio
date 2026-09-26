@@ -201,7 +201,21 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* Hero */
-.hero { padding: 96px 0 80px; }
+.hero { padding: 96px 0 80px; position: relative; overflow: hidden; }
+
+.hero-glow {
+  position: absolute;
+  top: -220px;
+  right: -160px;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 22%, transparent) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero .container { position: relative; z-index: 1; }
 
 .hero-grid {
   display: grid;
@@ -354,7 +368,7 @@ a { color: inherit; text-decoration: none; }
 
 .stat-value {
   font-family: 'Fraunces', serif;
-  font-size: 26px;
+  font-size: 32px;
   font-weight: 600;
   color: var(--accent);
 }
@@ -374,6 +388,33 @@ a { color: inherit; text-decoration: none; }
 .odoo-grid .card { gap: 8px; padding: 20px; }
 .odoo-grid .card h3 { font-size: 16px; }
 .odoo-grid .card p { font-size: 13px; }
+
+/* Delivery Lifecycle */
+.lifecycle-list { display: flex; flex-direction: column; }
+
+.lifecycle-item {
+  display: flex;
+  gap: 24px;
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+}
+
+.lifecycle-item:last-child { border-bottom: 1px solid var(--line); }
+
+.lifecycle-number {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--accent);
+  width: 56px;
+  flex-shrink: 0;
+}
+
+.lifecycle-body { display: flex; flex-direction: column; gap: 6px; }
+
+.lifecycle-title { font-size: 18px; font-weight: 600; }
+
+.lifecycle-desc { font-size: 14px; line-height: 1.6; color: var(--muted); max-width: 620px; }
 
 /* Personal Projects (kept low-key, self-directed work) */
 .section-minor { padding: 48px 0 64px; }
@@ -495,4 +536,6 @@ a { color: inherit; text-decoration: none; }
   .stat-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .odoo-grid { grid-template-columns: 1fr; }
   .personal-item { flex-direction: column; gap: 2px; }
+  .hero-glow { width: 360px; height: 360px; top: -140px; right: -120px; }
+  .lifecycle-item { gap: 14px; }
 }
